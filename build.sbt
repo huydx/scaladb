@@ -16,7 +16,8 @@ resolvers += "Akka Snapshot Repository" at "http://repo.akka.io/snapshots/"
 libraryDependencies ++= Seq(
   "com.typesafe.akka" %% "akka-actor" % "2.4-SNAPSHOT",
   "sh.den" % "scala-offheap_2.11" % "0.1",
-  "org.openjdk.jmh" % "jmh-core" % "0.9.2"
+  "org.openjdk.jmh" % "jmh-core" % "0.9.2",
+  "com.storm-enroute" %% "scalameter" % "0.7"
 )
 
 assemblyMergeStrategy in assembly := {
