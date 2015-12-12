@@ -10,6 +10,20 @@ scalaVersion := "2.11.7"
 
 val jmhVersion = "0.9.2"
 version in Jmh := jmhVersion
+fork in run := true
+javaOptions in run +=  "-verbosegc"
+javaOptions in run +=  "-XX:+PrintGCDetails"
+javaOptions in run += "-Xloggc:gc.log"
+javaOptions in run += "-Xmx500m"
+javaOptions in run += "-Xmn500m"
+javaOptions in run += "-XX:MaxPermSize=256M"
+javaOptions in console +=  "-verbosegc"
+javaOptions in console +=  "-XX:+PrintGCDetails"
+javaOptions in console += "-verbosegc"
+javaOptions in console += "-Xloggc:gc.log"
+javaOptions in console += "-Xmx500m"
+javaOptions in console += "-Xmn500m"
+javaOptions in console += "-XX:MaxPermSize=256M"
 
 resolvers += "Akka Snapshot Repository" at "http://repo.akka.io/snapshots/"
 

@@ -2,15 +2,16 @@ import scala.util.Random
 
 object Boot extends App with RandomStringGenerator {
   val node = new OffHeapStorage(100L)
-  val loop = 50000
+  val loop = 5000000
   val maxString = 400
 
   val start = System.currentTimeMillis()
   for (i <- 0 to loop) {
+    println(i)
     if (isGet) {
       node.get(nextKey)
     } else {
-      node.put(nextKey, next(Random.nextInt(maxString)))
+      node.put(nextKey, next(10000))
     }
   }
   val end = System.currentTimeMillis()
