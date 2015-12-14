@@ -2,20 +2,22 @@ import scala.util.Random
 
 object Boot extends App with RandomStringGenerator {
   val node = new OffHeapStorage(100L)
-  val loop = 5000000
-  val maxString = 400
+  val node2 = new OnHeapStorage
 
-  val start = System.currentTimeMillis()
-  for (i <- 0 to loop) {
-    println(i)
-    if (isGet) {
-      node.get(nextKey)
-    } else {
-      node.put(nextKey, next(10000))
+  def perf(node: StorageBase[String, String]) : Unit = {
+    val loop = 50000
+    val start = System.currentTimeMillis()
+    for (i <- 0 to loop) {
+      if (isGet) {
+        node.get(nextKey)
+      } else {
+        node.put(nextKey, next(10000))
+      }
     }
+    val end = System.currentTimeMillis()
+    println(s"cost ${end-start}")
   }
-  val end = System.currentTimeMillis()
-  println(s"cost ${end-start}")
+  perf(node)
 }
 
 
